@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "288341099904",
+    "project_id": "zenly-like-app",
+    "storage_bucket": "zenly-like-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288341099904:android:c926262281ffc729e26d65",
+        "android_client_info": {
+          "package_name": "com.example.zenly_like_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288341099904-e65fril96fgpbjhcvmp5q2egm9em1id6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA969D8qDlr_4kXa4jKjdmPQz8HjRuCgi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "288341099904-e65fril96fgpbjhcvmp5q2egm9em1id6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
