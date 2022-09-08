@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zenly_like_app/presentasion/home/home_page.dart';
+import 'package:zenly_like_app/top/top_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -7,11 +7,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Zenly-Like-Sample',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MapSample(),
+      home: const TopPage(),
     );
   }
 }

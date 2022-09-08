@@ -38,6 +38,7 @@ dependencies:
   google_maps_flutter: ^2.2.0
   flutter_config: ^2.0.0
   geolocator: ^9.0.1
+  flutter_signin_button:
 
 dev_dependencies:
   flutter_test:

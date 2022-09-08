@@ -4,24 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapSample extends StatefulWidget {
-  const MapSample({Key? key}) : super(key: key);
-
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
-
-class MapSampleState extends State<MapSample> {
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
   final _controller = Completer();
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Future(() {
-    //   getCurrentPosition();
-    // });
-  }
 
   Future<void> getCurrentPosition() async {
     final currentPosition = await Geolocator.getCurrentPosition();
