@@ -47,3 +47,11 @@ final signInGoogleProvider = Provider.autoDispose<Future<void> Function()>(
     }
   },
 );
+
+final signOutProvider = Provider<Future<void> Function()>(
+  (ref) => () async {
+    try {
+      await ref.watch(_authProvider).signOut();
+    } catch (e) {}
+  },
+);

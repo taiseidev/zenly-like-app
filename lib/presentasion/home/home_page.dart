@@ -3,8 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomePage extends StatelessWidget {
+import '../../feature/auth/auth.dart';
+
+class HomePage extends HookConsumerWidget {
   HomePage({super.key});
   final _controller = Completer<dynamic>();
 
@@ -24,8 +27,11 @@ class HomePage extends StatelessWidget {
       zoom: 19.151926040649414);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        ref.read(signOutProvider).call();
+      }),
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex, // デフォルトのカメラ位置
