@@ -13,8 +13,8 @@ void main() async {
   await FlutterConfig.loadEnvVariables();
 
   runApp(
-    ProviderScope(
-      child: const App(),
+    const ProviderScope(
+      child: App(),
     ),
   );
 }
