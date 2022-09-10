@@ -8,9 +8,14 @@ import '../../utils/uuid.dart';
 
 final _authProvider = Provider<FirebaseAuth>((_) => FirebaseAuth.instance);
 
+final authUserProvider = StreamProvider<User?>(
+  (ref) => ref.watch(_authProvider).authStateChanges(),
+);
+
 final _googleSignInProvider = Provider<GoogleSignIn>(
   (_) => GoogleSignIn(
-      clientId: DefaultFirebaseOptions.currentPlatform.iosClientId),
+    clientId: DefaultFirebaseOptions.currentPlatform.iosClientId,
+  ),
 );
 
 final signInGoogleProvider = Provider.autoDispose<Future<void> Function()>(

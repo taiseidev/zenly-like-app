@@ -4,11 +4,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zenly_like_app/feature/auth/auth.dart';
 import 'package:zenly_like_app/utils/constants/string.dart';
 
-class TopPageBody extends StatelessWidget {
+class TopPageBody extends HookConsumerWidget {
   const TopPageBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
       child: Center(
         child: Column(
@@ -24,16 +24,14 @@ class TopPageBody extends StatelessWidget {
             SizedBox(
               height: 100,
             ),
-            Consumer(
-              builder: (context, ref, child) => SignInButton(
-                Buttons.Google,
-                text: googleButtonStr,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                onPressed: () => ref.read(signInGoogleProvider).call(),
+            SignInButton(
+              Buttons.Google,
+              text: googleButtonStr,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-            )
+              onPressed: () => ref.read(signInGoogleProvider).call(),
+            ),
           ],
         ),
       ),
