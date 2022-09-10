@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:zenly_like_app/utils/constants/string.dart';
 
 class TopPageBody extends StatelessWidget {
   const TopPageBody({super.key});
@@ -12,7 +13,7 @@ class TopPageBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Simply',
+              appTitleStr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
@@ -23,7 +24,7 @@ class TopPageBody extends StatelessWidget {
             ),
             SignInButton(
               Buttons.Google,
-              text: "Googleで登録",
+              text: googleButtonStr,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),

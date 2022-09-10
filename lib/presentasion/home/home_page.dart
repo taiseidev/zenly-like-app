@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final _controller = Completer();
+  final _controller = Completer<dynamic>();
 
   Future<void> getCurrentPosition() async {
     final currentPosition = await Geolocator.getCurrentPosition();
