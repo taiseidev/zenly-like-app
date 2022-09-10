@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../utils/converter/timestamp.dart';
+
 part 'user.freezed.dart';
 part 'user.g.dart';
 
@@ -10,6 +12,8 @@ class User with _$User {
     required String id,
     required String name,
     required String mail,
+    @timestampConverter DateTime? createdAt,
+    @timestampConverter DateTime? updateAt,
     String? imageUrl,
   }) = _User;
 

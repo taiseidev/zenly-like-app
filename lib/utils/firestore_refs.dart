@@ -10,6 +10,6 @@ final userRef = db.collection('users').withConverter(
 
 /// Userドキュメントの参照
 DocumentReference<User> appUserRef({
-  required String userId,
+  required String uid,
 }) =>
-    userRef.doc(userId);
+    userRef.doc(uid);

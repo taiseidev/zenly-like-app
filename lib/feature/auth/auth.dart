@@ -31,8 +31,7 @@ final signInGoogleProvider = Provider.autoDispose<Future<void> Function()>(
 
       if (userInfo.user != null) {
         await ref.read(userRepositoryProvider).setUserInfo(
-              userId: userInfo.user!.uid,
-              uid: uuid,
+              uid: userInfo.user!.uid,
               name: userInfo.user!.displayName!,
               mail: userInfo.user!.email!,
               imageUrl: userInfo.user!.photoURL ?? '',

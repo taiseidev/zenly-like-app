@@ -23,6 +23,10 @@ mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get mail => throw _privateConstructorUsedError;
+  @timestampConverter
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @timestampConverter
+  DateTime? get updateAt => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +38,13 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String id, String name, String mail, String? imageUrl});
+  $Res call(
+      {String id,
+      String name,
+      String mail,
+      @timestampConverter DateTime? createdAt,
+      @timestampConverter DateTime? updateAt,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -50,6 +60,8 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? mail = freezed,
+    Object? createdAt = freezed,
+    Object? updateAt = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +77,14 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.mail
           : mail // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updateAt: updateAt == freezed
+          ? _value.updateAt
+          : updateAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -78,7 +98,13 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String mail, String? imageUrl});
+  $Res call(
+      {String id,
+      String name,
+      String mail,
+      @timestampConverter DateTime? createdAt,
+      @timestampConverter DateTime? updateAt,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -95,6 +121,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? mail = freezed,
+    Object? createdAt = freezed,
+    Object? updateAt = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_$_User(
@@ -110,6 +138,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.mail
           : mail // ignore: cast_nullable_to_non_nullable
               as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updateAt: updateAt == freezed
+          ? _value.updateAt
+          : updateAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -122,7 +158,12 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User extends _User {
   const _$_User(
-      {required this.id, required this.name, required this.mail, this.imageUrl})
+      {required this.id,
+      required this.name,
+      required this.mail,
+      @timestampConverter this.createdAt,
+      @timestampConverter this.updateAt,
+      this.imageUrl})
       : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
@@ -134,11 +175,17 @@ class _$_User extends _User {
   @override
   final String mail;
   @override
+  @timestampConverter
+  final DateTime? createdAt;
+  @override
+  @timestampConverter
+  final DateTime? updateAt;
+  @override
   final String? imageUrl;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, mail: $mail, imageUrl: $imageUrl)';
+    return 'User(id: $id, name: $name, mail: $mail, createdAt: $createdAt, updateAt: $updateAt, imageUrl: $imageUrl)';
   }
 
   @override
@@ -149,6 +196,8 @@ class _$_User extends _User {
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.mail, mail) &&
+            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.updateAt, updateAt) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
@@ -159,6 +208,8 @@ class _$_User extends _User {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(mail),
+      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(updateAt),
       const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
@@ -179,6 +230,8 @@ abstract class _User extends User {
       {required final String id,
       required final String name,
       required final String mail,
+      @timestampConverter final DateTime? createdAt,
+      @timestampConverter final DateTime? updateAt,
       final String? imageUrl}) = _$_User;
   const _User._() : super._();
 
@@ -190,6 +243,12 @@ abstract class _User extends User {
   String get name;
   @override
   String get mail;
+  @override
+  @timestampConverter
+  DateTime? get createdAt;
+  @override
+  @timestampConverter
+  DateTime? get updateAt;
   @override
   String? get imageUrl;
   @override

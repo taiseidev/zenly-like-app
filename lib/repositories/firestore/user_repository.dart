@@ -7,19 +7,27 @@ import '../../utils/firestore_refs.dart';
 final userRepositoryProvider = Provider.autoDispose((_) => UserRepository());
 
 class UserRepository {
-  Future<void> setUserInfo({
+  Future<User?> fetchUserInfo({
     required String userId,
+  }) async {
+    final ds = await appUserRef(uid: userId).get();
+    return ds.data();
+  }
+
+  Future<void> setUserInfo({
     required String uid,
     required String name,
     required String mail,
     String? imageUrl,
   }) async {
-    await appUserRef(userId: userId).set(
+    await appUserRef(uid: uid).set(
       User(
         id: uid,
         name: name,
         mail: mail,
         imageUrl: imageUrl,
+        createdAt: DateTime.now(), // timestampコンバーターでTimestampに変換される
+        updateAt: DateTime.now(), // timestampコンバーターでTimestampに変換される
       ),
       SetOptions(merge: true),
     );
