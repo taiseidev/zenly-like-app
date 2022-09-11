@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:zenly_like_app/feature/auth/auth.dart';
+import 'package:zenly_like_app/feature/auth.dart';
 import 'package:zenly_like_app/presentasion/home/home_page.dart';
 import 'package:zenly_like_app/presentasion/top/top_page.dart';
 

@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zenly_like_app/firebase_options.dart';
 import 'package:zenly_like_app/repositories/firestore/user_repository.dart';
 
-import '../../utils/uuid.dart';
+import '../utils/uuid.dart';
 
 final _authProvider = Provider<FirebaseAuth>((_) => FirebaseAuth.instance);
 
