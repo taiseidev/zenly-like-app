@@ -17,7 +17,7 @@ final initialPositionFutureProvider =
       await ref.watch(getCurrentPositionFutureProvider.future);
   return CameraPosition(
     target: LatLng(currentPosition.latitude, currentPosition.longitude),
-    zoom: 14,
+    zoom: 1,
   );
 });
 
