@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zenly_like_app/feature/map.dart';
 import 'package:zenly_like_app/presentasion/home/components/custom_marker.dart';
+import 'package:zenly_like_app/presentasion/home/components/prefecture_text.dart';
 import 'package:zenly_like_app/utils/common_loading.dart';
 
 class HomePage extends HookConsumerWidget {
@@ -35,23 +36,31 @@ class HomePage extends HookConsumerWidget {
       [],
     );
     return Scaffold(
-      body: CustomGoogleMapMarkerBuilder(
-        // 共有ユーザーのマーカーを表示
-        customMarkers: [],
-        builder: (BuildContext context, Set<Marker>? markers) {
-          // customMarkersの用意が出来たらbuilderにmarkersが渡される。
-          if (markers == null) {
-            return const CommonLoading();
-          }
-          return GoogleMap(
-            markers: markers,
-            initialCameraPosition:
-                initialPosition ?? _kGooglePlex, // デフォルトのカメラ位置
-            myLocationButtonEnabled: false, // デフォルトの現在地ボタン
-            myLocationEnabled: true, // 現在地アイコンの表示
-            onMapCreated: ref.watch(controllerProvider).complete,
-          );
-        },
+      body: Stack(
+        children: [
+          CustomGoogleMapMarkerBuilder(
+            // 共有ユーザーのマーカーを表示
+            customMarkers: [],
+            builder: (BuildContext context, Set<Marker>? markers) {
+              // customMarkersの用意が出来たらbuilderにmarkersが渡される。
+              if (markers == null) {
+                return const CommonLoading();
+              }
+              return GoogleMap(
+                markers: markers,
+                initialCameraPosition:
+                    initialPosition ?? _kGooglePlex, // デフォルトのカメラ位置
+                myLocationButtonEnabled: false, // デフォルトの現在地ボタン
+                myLocationEnabled: true, // 現在地アイコンの表示
+                onMapCreated: ref.watch(controllerProvider).complete,
+              );
+            },
+          ),
+          PrefectureText(
+            '北海道',
+            Colors.black,
+          ),
+        ],
       ),
     );
   }
