@@ -11,11 +11,10 @@ import 'package:zenly_like_app/utils/common_loading.dart';
 
 class HomePage extends HookConsumerWidget {
   HomePage({super.key});
-  final _controller = Completer<dynamic>();
 
   // 初期位置
   final CameraPosition _kGooglePlex = const CameraPosition(
-    target: LatLng(43.0686606, 141.3485613),
+    target: LatLng(43.068, 141.34),
     zoom: 5,
   );
 
@@ -25,7 +24,9 @@ class HomePage extends HookConsumerWidget {
     useEffect(
       () {
         Future(() async {
-          // initialPosition = await ref.read(initialPositionFutureProvider.future);
+          await ref
+              .read(getCurrentPositionProvider.future)
+              .then((value) => initialPosition = value);
           await ref.read(locationPermissionProvider.future);
           ref.watch(positionStreamProvider);
         });
@@ -35,14 +36,8 @@ class HomePage extends HookConsumerWidget {
     );
     return Scaffold(
       body: CustomGoogleMapMarkerBuilder(
-        customMarkers: [
-          marker(
-            markerId: 'id-1',
-            latLng: LatLng(43.0686606, 141.3485613),
-            imageUrl:
-                'https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80',
-          )
-        ],
+        // 共有ユーザーのマーカーを表示
+        customMarkers: [],
         builder: (BuildContext context, Set<Marker>? markers) {
           // customMarkersの用意が出来たらbuilderにmarkersが渡される。
           if (markers == null) {
@@ -54,7 +49,7 @@ class HomePage extends HookConsumerWidget {
                 initialPosition ?? _kGooglePlex, // デフォルトのカメラ位置
             myLocationButtonEnabled: false, // デフォルトの現在地ボタン
             myLocationEnabled: true, // 現在地アイコンの表示
-            onMapCreated: _controller.complete,
+            onMapCreated: ref.watch(controllerProvider).complete,
           );
         },
       ),

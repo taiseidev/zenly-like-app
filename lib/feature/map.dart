@@ -1,24 +1,33 @@
+import 'dart:async';
+
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final getCurrentPositionFutureProvider = FutureProvider<Position>(
+// 現在地を取得
+final getCurrentPositionProvider = FutureProvider<CameraPosition>(
   (ref) async {
     final position = await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
-    return position;
+
+    return CameraPosition(
+      target: LatLng(position.latitude, position.longitude),
+      zoom: 1,
+    );
   },
 );
 
-final initialPositionFutureProvider =
-    FutureProvider<CameraPosition>((ref) async {
-  final currentPosition =
-      await ref.watch(getCurrentPositionFutureProvider.future);
-  return CameraPosition(
-    target: LatLng(currentPosition.latitude, currentPosition.longitude),
-    zoom: 1,
-  );
+final controllerProvider = Provider.autoDispose(
+  (_) => Completer<GoogleMapController>(),
+);
+
+// 現在地にカメラを移動
+final moveCurrentPositionProvider =
+    FutureProvider.autoDispose<void>((ref) async {
+  final position = await ref.read(getCurrentPositionProvider.future);
+  final controller = await ref.read(controllerProvider).future;
+  await controller.animateCamera(CameraUpdate.newCameraPosition(position));
 });
 
 final locationSettingsProvider = Provider<LocationSettings>(
@@ -39,7 +48,7 @@ final locationPermissionProvider = FutureProvider<void>((_) async {
 // 現在地を監視
 final positionStreamProvider = Provider.autoDispose((ref) {
   Geolocator.getPositionStream(
-    locationSettings: ref.watch(locationSettingsProvider),
+    locationSettings: ref.read(locationSettingsProvider),
   ).listen((Position? position) {
     // 現在地が変更した時の処理
     print(position);
