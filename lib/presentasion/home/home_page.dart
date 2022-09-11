@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zenly_like_app/feature/map.dart';
 import 'package:zenly_like_app/presentasion/home/components/custom_marker.dart';
+import 'package:zenly_like_app/utils/common_loading.dart';
 
 class HomePage extends HookConsumerWidget {
   HomePage({super.key});
@@ -45,9 +46,7 @@ class HomePage extends HookConsumerWidget {
         builder: (BuildContext context, Set<Marker>? markers) {
           // customMarkersの用意が出来たらbuilderにmarkersが渡される。
           if (markers == null) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const CommonLoading();
           }
           return GoogleMap(
             markers: markers,

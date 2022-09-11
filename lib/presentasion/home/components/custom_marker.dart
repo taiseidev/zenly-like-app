@@ -27,14 +27,16 @@ class CustomMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(imageUrl),
-          radius: 50,
-        ),
-      ],
+    return GestureDetector(
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          CircleAvatar(
+            backgroundImage: NetworkImage(imageUrl),
+            radius: 50,
+          ),
+        ],
+      ),
     );
   }
 }
