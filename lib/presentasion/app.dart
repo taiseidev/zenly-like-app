@@ -20,7 +20,6 @@ class App extends HookConsumerWidget {
         return Stack(
           children: [
             if (child != null) child,
-            // Indicator.
             Consumer(
               builder: (context, ref, child) {
                 final isLoading = ref.watch(loadingServiceProvider);

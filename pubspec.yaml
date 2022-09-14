@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons:
   flutter_config:
   geolocator:
+  flutter_weather_bg_null_safety:
 
   # Google
   google_maps_flutter:
