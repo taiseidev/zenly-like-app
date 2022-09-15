@@ -55,6 +55,7 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   lottie: ^1.4.2
   dio: ^4.0.6
+  connectivity_plus:
 
 dev_dependencies:
   flutter_test:
